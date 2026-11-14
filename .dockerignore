@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/__pycache__
+**/.pytest_cache
+**/*.tsbuildinfo
+**/.DS_Store
+.git
+**/.venv
+data
+prototypes
+docs
+.env
+.taste-skill
