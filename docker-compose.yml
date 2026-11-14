@@ -1,0 +1,67 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: news-anchor-db
+    restart: unless-stopped
+    entrypoint: ["/db-entrypoint.sh"]
+    # Small on purpose: this server is shared. The article store is read through the operating system's file
+    # cache, which Linux hands back to other programs whenever they need memory.
+    command: >
+      postgres -c shared_buffers=128MB -c effective_cache_size=1GB -c work_mem=4MB -c maintenance_work_mem=64MB
+      -c max_connections=20 -c autovacuum_max_workers=2 -c max_wal_size=512MB -c min_wal_size=80MB
+      -c temp_file_limit=1GB -c wal_compression=on -c checkpoint_timeout=15min -c random_page_cost=1.1
+      -c synchronous_commit=off -c timezone=UTC -c max_parallel_workers_per_gather=0
+    environment:
+      POSTGRES_USER: na
+      POSTGRES_PASSWORD: ${NA_DB_PASSWORD:-na}
+      POSTGRES_DB: na
+      TZ: ${TZ:-Asia/Kolkata}
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/shared:/shared
+      - ./docker/db-entrypoint.sh:/db-entrypoint.sh:ro
+    shm_size: 256mb          # parallel queries share memory through /dev/shm; the 64 MB default made them fail with "No space left on device"
+    mem_limit: ${NA_DB_MEM:-768m}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U na -d na"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Optional: solves JavaScript challenges (Cloudflare "Just a moment...") in a headless Chrome, for Settings → Refresh → "Also solve JavaScript
+  # challenges with FlareSolverr". Not started by the usual redeploy; start it with:  docker-compose --profile flaresolverr up -d flaresolverr
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: news-anchor-flaresolverr
+    profiles: ["flaresolverr"]
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: warning
+      TZ: ${TZ:-Asia/Kolkata}
+      BROWSER_TIMEOUT: "60000"
+    mem_limit: ${NA_FLARE_MEM:-768m}       # Chrome is the heavy part; it only runs while a page is being solved
+
+  app:
+    build: .
+    image: news-anchor:latest
+    container_name: news-anchor
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8001:8000"              # change the left side to use another host port
+    volumes:
+      - ./data/app:/data         # secret key and small files
+      - ./data/shared:/data/shared:ro
+    environment:
+      TZ: ${TZ:-Asia/Kolkata}
+      NA_DATABASE_URL: postgresql://na:${NA_DB_PASSWORD:-na}@db:5432/na
+      NA_COOKIE_SECURE: ${NA_COOKIE_SECURE:-false}   # true when served over HTTPS (reverse proxy)
+      NA_USER_AGENT: ${NA_USER_AGENT:-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36}
+      NA_WIKIMEDIA_USER_AGENT: ${NA_WIKIMEDIA_USER_AGENT:-}   # Wikidata/Wikipedia ask programs to name themselves; add a contact address here
+      NA_MEDIACLOUD_TOKEN: ${NA_MEDIACLOUD_TOKEN:-}   # optional; can also be pasted in Settings
+      NA_EMBED_THREADS: "2"
+      PUID: "10001"
+      PGID: "10001"
+    mem_limit: ${NA_APP_MEM:-1536m}

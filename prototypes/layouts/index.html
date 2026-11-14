@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News Anchor: layout prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-layout="split">
+
+<div class="proto-bar" role="region" aria-label="Prototype controls">
+  <span class="proto-label">Prototype layout</span>
+  <div class="seg" id="layoutSeg">
+    <button data-layout="split" aria-pressed="true">Split view</button>
+    <button data-layout="strip">Top strip</button>
+    <button data-layout="page">Separate page</button>
+    <button data-layout="drawer">Drawer</button>
+  </div>
+  <button class="proto-theme" id="themeBtn">Light theme</button>
+  <span class="proto-note">Real headlines from 30 Oct 2026. Ratings, outlet counts and briefings are illustrative.</span>
+</div>
+
+<div class="app">
+  <nav class="rail" aria-label="Main">
+    <a class="mark" href="#" aria-label="News Anchor">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3v14" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M5 13a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="12" cy="4.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 9h7" stroke="currentColor" stroke-width="1.6"/></svg>
+    </a>
+    <a class="rail-item is-active" href="#" aria-current="page" title="News"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h8M8 12h8M8 15h5" stroke="currentColor" stroke-width="1.5"/></svg><span>News</span></a>
+    <a class="rail-item" href="#" title="Saved"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Saved</span></a>
+    <a class="rail-item" href="#" title="Sources"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Sources</span></a>
+    <a class="rail-item rail-bottom" href="#" title="Settings"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.5"/></svg><span>Settings</span></a>
+  </nav>
+
+  <div class="main">
+    <header class="top">
+      <h1 class="visually-hidden">News Anchor</h1>
+      <div class="scopebar">
+        <div class="crumbs" aria-label="Where">
+          <span class="crumb-kind">Where</span>
+          <ol id="whereCrumbs"></ol>
+        </div>
+        <div class="crumbs" aria-label="What">
+          <span class="crumb-kind">What</span>
+          <ol id="whatCrumbs"></ol>
+        </div>
+        <button class="search" id="searchBtn" aria-label="Jump to a place or topic">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Jump to a place or topic</span><kbd>/</kbd>
+        </button>
+      </div>
+      <div class="tabrow">
+        <div class="tabs" role="tablist" id="tabs">
+          <button role="tab" data-tab="top" aria-selected="true"><span>Top</span></button>
+          <button role="tab" data-tab="trending" aria-selected="false"><span>Trending</span></button>
+          <button role="tab" data-tab="following" aria-selected="false"><span>Following</span></button>
+          <button role="tab" data-tab="saved" aria-selected="false"><span>Saved</span></button>
+          <button role="tab" data-tab="briefing" aria-selected="false" class="only-page"><span>Briefing</span></button>
+        </div>
+        <div class="status">
+          <button class="ghost only-drawer" id="drawerBtn">Briefing</button>
+          <span class="muted">Updated 4 min ago</span>
+          <button class="ghost" id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="work" id="work">
+      <section class="list" id="list" aria-label="Stories"></section>
+      <div class="divider" id="divider" role="separator" aria-orientation="vertical" aria-label="Resize reading pane" tabindex="0"></div>
+      <aside class="pane" id="pane" aria-label="Reading pane">
+        <div class="pane-head">
+          <button class="pane-grip" id="paneGrip" aria-label="Expand or minimise the briefing"></button>
+          <div class="pane-title" id="paneTitle"></div>
+          <button class="icon-btn" id="paneToggle" aria-expanded="true" aria-label="Minimise reading pane">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+        </div>
+        <div class="pane-peek" id="panePeek"></div>
+        <div class="pane-body" id="paneBody"></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="popover" id="popover" role="dialog" aria-modal="false" hidden></div>
+<div class="card" id="sourceCard" role="tooltip" hidden></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
