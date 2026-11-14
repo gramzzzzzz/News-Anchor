@@ -1,0 +1,164 @@
+# News Anchor topic taxonomy (v2, Nov 2026).
+# Backbone: the 17 top-level IPTC Media Topics (https://iptc.org/standards/media-topics/), the subject vocabulary news agencies use.
+# Two levels only, and no topic names a place: "Indian markets" is Economy > Markets with the place India. Places come from the place axis.
+# One topic per line: slug | Name | aliases | flags
+#   Indentation (two spaces) makes a topic a sub-topic of the line above. The code is the slugs joined with a dot: sport.cricket.
+#   aliases: comma-separated words or phrases matched in headlines and leads (whole words, any case).
+#            An alias starting with ~ is ambiguous: it counts only with context (a related topic in the text, or a feed hint).
+#   flags:   * = shown in menus by default. Others are collected and searchable too; they only stay out of the menus until chosen
+#            in Settings > Topics. Categories are always shown.
+
+# Phrases that only cover their words, so a shorter alias inside them does not count ("hacked to death" is a killing, not a hack).
+!ignore | preseason poll, preseason polls, coaches poll, coaches' poll, ap poll, power rankings, culture war, culture wars, price war, bidding war, war of words, war chest, star war, school district, hollywood avenue, hollywood boulevard, hollywood road, tennis court, tennis courts, rooftop space, office space, parking space, green space, safe space, makers market, christmas market, farmers market, farmers' market, flea market, night market, market stall, market stalls, real estate market, housing market, job market, energy drink, energy drinks, drain your energy, high energy, positive energy, carbon fiber, carbon fibre, carbon monoxide, carbon copy, hacked to death, hacked him to death, hacked her to death, hacked them to death, life hack, life hacks, travel hack, airline hack, money hack, budget hack, kitchen hack, hack job, growth hack, breach of privilege, privilege breach, rules breach, breach of rules, breach of contract, breach of trust, breach of the peace, ceasefire breach, breach of conduct, conduct breach, data breach of contract, bsky social, earnings forecast, revenue forecast, sales forecast, profit forecast, career goals, career high, career best, career-high, career-best, star wars, court of public opinion, defence lawyer, defense lawyer, defense attorney, defence counsel, on defense, on the defensive
+
+politics | Politics and government | politics, political, politician, politicians
+  elections | Elections | election, elections, ~polls, ~poll, voting, voters, ~ballot, by-election, bypoll, electoral, election commission, vote counting, exit poll, general election, presidential election, parliamentary election, assembly election, assembly polls, municipal election, local body polls, panchayat election, campaign trail, opinion poll, manifesto, early voting, midterms, midterm, polling station, polling booth, polls close, polls open | *
+  government | Government and policy | ~government, ~cabinet, ~ministry, ~minister, ~policy, ordinance, bureaucracy, civil service, prime minister, ~president, chief minister, ~governor, white house, downing street, ~scheme, welfare scheme, ias, bureaucrats, district administration, upsc, centre-state, federalism | *
+  legislature | Parliaments and legislatures | parliament, lok sabha, rajya sabha, assembly session, legislature, ~congress, senate, house of commons, bill passed, legislation, mps, mlas | *
+  parties | Parties and leaders | ~party, bjp, congress party, dmk, aiadmk, tvk, aap, tmc, labour party, conservative party, democrats, republicans, ~opposition, ~coalition, ~alliance, india bloc, nda, likud | *
+  diplomacy | Diplomacy and international relations | diplomacy, diplomatic, foreign minister, foreign secretary, external affairs, ~summit, ~bilateral, ~embassy, ~ambassador, ~treaty, ~sanctions, sanctioned, embargo, export controls, asset freeze, geopolitics, strategic partnership, united nations, un general assembly, security council, nato, european union, african union, g20, g7, brics, quad, asean, sco, commonwealth | *
+  local-government | Local government | municipal corporation, corporation council, ~mayor, panchayat, ~ward, civic body, city council, county commission
+  rights | Human rights and civil liberties | human rights, civil liberties, freedom of speech, press freedom, censorship, detention, custodial, internet shutdown, media ban, journalists arrested
+  protest | Protests and activism | ~protest, ~protests, demonstration, demonstrators, agitation, sit-in, hunger strike, bandh, ~rally, ~rallies
+  migration-policy | Immigration and citizenship | immigration, deportation, deported, visa policy, citizenship, ~refugees, ~refugee, asylum, caa, nrc
+  constitution | Constitution and rights | constitution, constitutional bench, fundamental rights, citizenship law, ucc, uniform civil code, article 370
+
+economy | Economy, business and finance | economy, economic, business, ~company, ~companies, firm, corporate, industry, finance, financial, investors, investment
+  macro | Growth, inflation and jobs | gdp, gdp forecast, economic growth, recession, slowdown, growth forecast, inflation, cpi, wpi, retail inflation, price rise, deflation, unemployment, jobless, payrolls, labour force, poverty, inequality, world bank, imf, oecd, global economy | *
+  central-banks | Central banks and interest rates | monetary policy, mpc, repo rate, rate decision, central bank, federal reserve, ~fed, ecb, bank of england, interest rate decision, rate cut, rate hike, ~interest rates | *
+  public-finance | Budgets and taxes | ~budget, union budget, fiscal deficit, gst, tax revenue, government borrowing, fiscal policy, gst council, ~tax, income tax, tax slab, corporate tax, capital gains tax, tax evasion, subsidy, subsidies, disinvestment | *
+  trade | Trade and tariffs | trade deal, tariff, tariffs, ~exports, ~imports, trade deficit, free trade agreement, fta, wto, customs duty, tariff war | *
+  markets | Markets and investing | ~markets, stock market, stock markets, share market, ~market, ~shares, ~stocks, stock price, ~equities, ~market cap, sell-off, sensex, nifty, bse, nse, dalal street, wall street, dow jones, nasdaq, s&p 500, ftse, nikkei, hang seng, fpi, fii, ipo, ipos, public offering, grey market premium, bond yields, bond yield, ~treasury, mutual fund, mutual funds, etf, index fund, sip | *
+  currencies-commodities | Currencies and commodities | rupee, ~dollar, ~forex, exchange rate, ~euro, ~yen, ~yuan, ~currency, forex reserves, gold price, gold rate, silver price, crude prices, brent, ~commodities, metals prices | *
+  banking | Banking, insurance and payments | ~bank, ~banks, banking, ~lender, ~loan, ~deposits, nbfc, bad loans, npa, ~insurance, ~insurer, irdai, fintech, upi, digital payments, paytm, phonepe, npci, credit card, credit score, sebi, ~sec, financial regulator | *
+  crypto | Crypto and digital assets | crypto, cryptocurrency, bitcoin, ethereum, stablecoin, crypto exchange, binance, coinbase, ~blockchain, web3, defi | *
+  companies | Companies and earnings | quarterly results, q1 results, q2 results, q3 results, q4 results, ~earnings, net profit, revenue growth, ~profit, ~revenue, ~ceo, chief executive, cfo, chairman, board of directors, shareholders, corporate governance, insider trading, whistleblower | *
+  startups | Startups and venture capital | ~startup, startups, venture capital, funding round, series a, series b, seed round, unicorn, ~valuation, ~founder, ~founders | *
+  deals | Mergers and acquisitions | ~merger, ~acquisition, ~acquires, ~takeover, buyout, stake sale, deal worth, divestment | *
+  energy | Energy | ~energy, energy prices, energy bills, energy crisis, energy policy, electricity, fuel, crude oil, oil prices, opec, opec+, refinery, natural gas, lng, petroleum, pipeline, power grid, power cut, power outage, blackout, discom, peak demand, power plant, renewable, renewables, ~solar, wind power, green hydrogen, clean energy, solar power, offshore wind, energy transition, battery storage, nuclear power, nuclear plant, ~reactor, uranium, small modular reactor, coal, coal mine, thermal power, petrol price, diesel price, fuel price, lpg price, gasoline prices | *
+  agriculture | Agriculture and food supply | agriculture, ~farmers, ~farmer, farming, ~crop, crops, ~harvest, kharif, rabi, msp, ~farm, farm law, farmers protest, crop insurance, paddy, wheat, rice prices, sugarcane, ~cotton, pulses, edible oil, fertiliser, urea, dairy, milk prices, livestock, poultry, fisheries, fishermen, aquaculture, food security, ration, public distribution | *
+  autos | Cars and the motor industry | car sales, vehicle sales, automaker, carmaker, automobile, electric vehicle, electric vehicles, electric car, ev, evs, ev charging, electric suv, electric scooter, tata motors, maruti suzuki, hyundai motor, ~mahindra, toyota, volkswagen, two-wheeler, motorcycle, scooter, car launch, ~suv, self-driving, robotaxi, waymo, tesla, byd | *
+  transport | Transport and infrastructure | metro rail, railways, ~train, ~trains, ~bus, ~highway, ~airport, bullet train, infrastructure, ~airline, airlines, aviation, boeing, airbus, ~shipping, ~logistics, ~port, ~freight, supply chain, ~construction, real estate, housing sales, property market | *
+  industry | Manufacturing, mining and retail | manufacturing, ~factory, ~mining, ~steel, aluminium, ~copper, iron ore, textile, garment, apparel, ~retail, retailer, e-commerce, quick commerce, pharma company, drugmaker, defence manufacturing, telecom operator, spectrum
+  consumer | Consumer affairs | ~consumer, ~consumers, product recall, consumer court, price hike
+  personal-finance | Personal finance | personal finance, income tax return, itr, tax saving, fixed deposit, home loan, emi, ppf, nps, pension, epf, retirement savings
+
+science | Science and technology | science, scientists, scientific, researchers, study finds, technology, ~tech, ~digital
+  ai | Artificial intelligence | artificial intelligence, ai, generative ai, genai, machine learning, deep learning, chatbot, large language model, llm, openai, chatgpt, anthropic, claude, gemini, deepmind, copilot, ai regulation, ai act, ai safety, deepfake, data centre, data center | *
+  cybersecurity | Cybersecurity | cybersecurity, cyber security, hack, hacked, hackers, cyberattack, cyber attack, data breach, security breach, ~breach, ransomware, malware, phishing, ~vulnerability, zero-day, ~exploit, cert-in, spyware, data leak, state-sponsored hackers, cyber espionage, lazarus | *
+  computing | Chips, devices and computing | semiconductor, semiconductors, ~chip, ~chips, chipmaker, foundry, tsmc, intel, amd, nvidia, qualcomm, smartphone, iphone, android, pixel, laptop, tablet, smartwatch, wearable, gadget, gpu, cpu, supercomputer, quantum computing, quantum computer, qubit, phone launch | *
+  internet | Internet, software and platforms | social media, internet, instagram, facebook, whatsapp, youtube, tiktok, threads, bluesky, reddit, online platform, ~software, ~cloud, saas, aws, azure, operating system, open source, linux, github, google, alphabet, microsoft, ~meta, ~amazon, big tech, antitrust, data protection, digital markets act, 5g, broadband, starlink, telecom network, aadhaar, digital public infrastructure, ~influencers, content creators | *
+  space | Space and astronomy | ~space, outer space, space agency, space mission, astronomy, astronomers, nasa, isro, esa, spacex, astronaut, astronauts, gaganyaan, chandrayaan, artemis, rocket launch, starship, falcon 9, pslv, gslv, ~satellite, satellites, space station, iss, black hole, exoplanet, james webb, hubble, supernova, comet, meteor shower, solar eclipse, lunar eclipse, ~telescope, ~galaxy, ~asteroid, ~lunar, mars rover | *
+  research | Research and discoveries | physics, physicists, cern, biology, genome, dna, ~evolution, ~species, chemistry, chemists, graphene, superconductor, mathematics, mathematicians, theorem, neuroscience, psychology study, archaeology, archaeologists, excavation, fossil, keezhadi, nobel prize, peer review, research funding, ~study, clinical trial | *
+  robotics | Robotics and automation | ~robot, robotics, humanoid robot, humanoid, automation, ~drone
+
+health | Health | health, healthcare, medical, hospital, hospitals, doctors
+  public-health | Public health and outbreaks | public health, vaccination, vaccine, vaccines, immunisation, outbreak, epidemic, pandemic, virus, dengue, malaria, ebola, covid, influenza, mpox, nipah, cholera, tuberculosis, =WHO, world health organization | *
+  medicine | Diseases and treatments | ~treatment, ~drug, ~therapy, gene therapy, surgery, cancer, oncology, tumour, chemotherapy, diabetes, heart disease, heart attack, cardiac, stroke, hypertension, dementia, alzheimer's, transplant | *
+  health-systems | Health systems and policy | health insurance, ayushman bharat, nhs, health policy, hospital fees, doctors strike, medical college, nursing, health workers, emergency ward, drug approval, fda, cdsco, drug recall, generic drugs, drug price control | *
+  mental-health | Mental health | mental health, depression, anxiety, suicide prevention, psychiatric
+  womens-health | Women's and children's health | women's health, pregnancy, maternal, menopause, pcos, contraception, fertility, ivf, child health, infant mortality, malnutrition
+  nutrition-fitness | Nutrition and fitness | nutrition, ~diet, obesity, fitness, ~exercise, yoga, weight loss
+
+environment | Environment | environment, environmental, ecology
+  climate-change | Climate change | climate change, global warming, emissions, ~carbon, net zero, cop30, cop31, cop summit, ipcc, climate crisis, global temperature, sea level rise, warmest year, el nino, la nina, carbon credits, carbon market | *
+  pollution | Pollution and waste | pollution, air quality, aqi, smog, ~plastic, ~waste, sewage, toxic, waste management, recycling, landfill, e-waste, single-use plastic | *
+  nature | Wildlife, forests and oceans | wildlife, conservation, ~tiger, ~tigers, ~elephant, cheetah, ~forest, biodiversity, endangered, poaching, national park, coral reef, coral bleaching, mangrove, wetlands, deep sea, antarctica, arctic, glacier, sea ice | *
+  water | Water | water crisis, water supply, reservoir, groundwater, ~river, ~dam, water shortage | *
+
+weather | Weather | weather, ~forecast, weather forecast, ~rain, heavy rain, heatwave, heat wave, cold wave, ~monsoon, imd, met office, ~storm, snowfall, ~fog, thunderstorm, temperatures
+
+disaster | Disasters, accidents and emergencies | disaster, disasters, calamity, ~emergency, rescue operation, death toll, evacuated, red alert
+  storms-floods | Storms, floods and droughts | cyclone, hurricane, typhoon, tropical storm, storm surge, landfall, ~flood, ~floods, ~flooding, flood alert, flood warning, flooded, inundated, deluge, flash flood, waterlogging, drought, dam breach, cloudburst | *
+  earthquakes | Earthquakes, volcanoes and landslides | earthquake, tremor, aftershock, ~magnitude, volcano, volcanic eruption, tsunami, seismic, landslide, landslides, avalanche, mudslide | *
+  fires | Fires and wildfires | wildfire, wildfires, forest fire, bushfire, fire broke out, blaze, gutted | *
+  accidents | Accidents and transport disasters | ~accident, plane crash, air crash, train accident, derailment, bus accident, road accident, boat capsize, stampede, building collapse, ~blast, explosion, factory fire, chemical leak, gas leak, mine collapse, emergency landing | *
+  humanitarian | Humanitarian crises | humanitarian, famine, displaced, relief camp, aid convoy, unhcr, red cross | *
+
+conflict | Conflict, war and peace | ~war, ~conflict, ~military, armed forces
+  war | Armed conflict | ~war, airstrike, airstrikes, missile, missiles, patriot missile, shelling, ceasefire, invasion, ~troops, ~offensive, drone attack, drone strike, front line, hamas, hezbollah, houthi, houthis, rsf, m23, idf | *
+  terrorism | Terrorism and extremism | terror attack, terrorist, terrorism, militant, militants, bomb blast, isis, al-shabaab, boko haram, extremist, extremism | *
+  defence | Defence and the military | ~defence, ~defense, defence ministry, ministry of defence, defence minister, defense department, department of defense, defense secretary, defence budget, defense budget, defence forces, ~army, ~navy, air force, military exercise, defence ministry, pentagon, fighter jet, submarine, defence deal, arms deal | *
+  security | National security and intelligence | national security, ~border, intelligence agency, insurgency, maoist, naxal, espionage, spy, cyber warfare, disinformation campaign | *
+  nuclear-arms | Nuclear weapons and arms control | nuclear weapon, nuclear weapons, nuclear deal, arms control, enrichment, iaea, nuclear test | *
+  peace | Peace processes | peace talks, peace deal, peace plan, ~negotiations, truce, mediation | *
+
+crime | Crime, law and justice | crime, police, court, arrested, arrest
+  courts | Courts and the law | supreme court, high court, ~court, judge, verdict, bail, petition, hearing, judgment, ~bench, chief justice, lawsuit, new law, amendment, law commission | *
+  crime-news | Crime | murder, murdered, homicide, robbery, theft, assault, ~killed, kidnapping, ~gang, ~shooting, stabbing, stabbed, shot dead, rape case, lynching | *
+  corruption-fraud | Corruption and fraud | ~ed, cbi, enforcement directorate, ~raid, money laundering, corruption, bribery, fraud case, chargesheet, ~probe, fraud, ponzi, embezzlement, bank fraud, ~scandal, graft | *
+  policing | Policing and prisons | ~police, ~cops, police department, police chief, police force, police officers, police misconduct, police reform, police recruitment, commissioner of police, custodial death, encounter, police station, ~prison, ~jail, inmates, parole, prison reform, prison education | *
+  cybercrime | Cybercrime and scams | cyber crime, cybercrime, online fraud, sextortion, cyber fraud, online scam, digital arrest, phishing scam | *
+  trafficking | Drugs and trafficking | syndicate, drug trafficking, narcotics, cartel, smuggling, arms smuggling, human trafficking, drug seizure, mafia
+
+society | Society | society, social issues
+  inequality | Poverty, caste and inequality | poverty, homelessness, caste, discrimination, inequality, child labour, bonded labour, dalit, tribal, food bank, food banks, food pantry, homeless shelter | *
+  gender | Gender and equality | ~gender, women's rights, ~equality, lgbtq, dowry, harassment, women's safety | *
+  migration | Migration and refugees | ~migrants, ~migration, migrant workers, refugee camp | *
+  family | Family and children | parenting, ~children, ~kids, ~family, childcare, adolescents, ~marriage, ~adoption
+  welfare | Welfare and charity | philanthropy, ~donation, ngo, charity, ~foundation, csr, crowdfunding, ~volunteers, social security, ~welfare, welfare scheme, welfare payments
+  fact-checks | Fact checks | fact check, fact-check, misleading claim, false claim, viral video, debunk | *
+  obituaries | Deaths and obituaries | passes away, ~died, ~death of, obituary, ~dies at
+
+education | Education | education, ~school, ~schools, ~students, university, universities, ~exam, neet, jee, cbse, board exams, ugc, ~college, admission, teachers, curriculum
+  schools | Schools | ~school, ~schools, school students, board exams, cbse, ~teachers | *
+  higher-education | Universities and exams | university, universities, ~college, neet, jee, entrance exam, ugc, admission, campus, student visa | *
+
+labour | Labour | ~jobs, ~workers, employment, workplace, labour
+  jobs | Jobs, layoffs and hiring | layoffs, layoff, job cuts, hiring freeze, retrenchment, mass hiring, campus hiring, ~hiring, attrition, career fair, internship, job market, h-1b, work visa | *
+  unions | Strikes and unions | ~strike, ~strikes, walkout, trade union, labour union, industrial action, collective bargaining | *
+  conditions | Wages and working conditions | minimum wage, wages, labour code, labour codes, working hours, four-day week, gratuity, epfo, gig workers, gig economy, delivery partners, remote work, work from home, platform workers | *
+
+religion | Religion and belief | religion, religious, ~temple, ~church, ~mosque, pilgrimage, pope, vatican, ~bishop, imam, ~priest, faith, hindu religious and charitable endowments
+  festivals | Religious festivals and pilgrimage | ~festival, pilgrimage, pilgrims, diwali, deepavali, eid, christmas, ramadan, easter, pongal, navratri, durga puja, kumbh, hajj
+  institutions | Religious leaders and institutions | ~pope, vatican, ~church, ~bishop, imam, ~mosque, ~temple, ~priest, ~monk, ~archbishop, ~cardinal
+
+arts | Arts, culture, entertainment and media | entertainment, ~culture, cultural, ~arts
+  film | Film | ~film, ~films, ~movie, movies, cinema, box office, opening weekend, ott release, trailer, teaser, censor board, cbfc, oscars, academy awards, cannes, venice film festival, film festival, bollywood, kollywood, tollywood, mollywood, sandalwood, ~hollywood, rajinikanth, vijay sethupathi, ajith kumar, suriya, dhanush, kamal haasan, sivakarthikeyan, shah rukh khan, salman khan, aamir khan, marvel, film review, movie review | *
+  tv-streaming | TV and streaming | netflix, prime video, disney+, jiohotstar, hotstar, web series, streaming, tv series, emmys, tv show, reality show, bigg boss, television, sitcom, talk show, series review | *
+  music | Music | music, album, singer, concert, grammys, grammy, playlist, ar rahman, a r rahman, ilaiyaraaja, anirudh, carnatic music, carnatic, hindustani, playback singer, k-pop, bts, blackpink, taylor swift, billboard, world tour, eurovision, coachella | *
+  celebrity | Celebrity | celebrity, celebrities, ~star, ~wedding, ~engagement, ~breakup, ~divorce, red carpet, paparazzi, met gala, gossip | *
+  books | Books and literature | ~book, ~novel, ~author, booker prize, literature, publishing, poet, poetry, sahitya akademi, literary festival
+  heritage | Art, museums and heritage | ~art, artist, ~heritage, ~museum, ~exhibition, ~dance, bharatanatyam, heritage site, unesco, monument, ~history, ~historic
+  stage | Theatre, comedy and live shows | theatre, theater, broadway, stand-up, stand-up comedian, comedy show, musical, live show
+  anime-comics | Anime and comics | anime, manga, comics, comic book, webtoon, crunchyroll, studio ghibli, cosplay, comic-con
+  video-games | Video games | video game, video games, gaming, gamer, gamers, game developer, game studio, ~console, playstation, ps5, xbox, game pass, nintendo, switch 2, ~steam, steam deck, epic games, esports, e-sports, unreal engine, indie game, dlc, early access, ubisoft, electronic arts, take-two, rockstar, activision, capcom, square enix | *
+  media | News media and journalism | journalism, journalist, journalists, newspaper, ~broadcaster, newsroom, ~editor, media company, ~advertising, podcast, podcasts, radio
+
+lifestyle | Lifestyle and leisure | ~lifestyle, leisure
+  travel | Travel and tourism | ~travel, ~tourism, ~tourist, tourists, ~flights, ~hotel, visa-free, holiday destination | *
+  food | Food and drink | ~food, restaurant, recipe, cuisine, chef, ~wine, ~coffee | *
+  fashion | Fashion and beauty | fashion, ~fashion week, designer, runway, beauty, makeup, skincare, couture, sneakers, luxury brand
+  home | Home and garden | interior design, home decor, gardening, diy, smart home, home renovation
+  wellness | Wellness | ~wellness, meditation, ~sleep, mental wellbeing, longevity
+  astrology | Horoscopes and astrology | horoscope, horoscopes, astrology, zodiac, tarot
+  pets | Pets and animals | ~dog, ~cat, ~pet, ~pets, zoo, animal rescue, stray dogs
+
+human-interest | Human interest | viral, offbeat, heartwarming, inspiring, record-breaking, world record, quirky, feel-good
+  good-news | Good news | good news, heartwarming, inspiring story, ~rescued, reunited, good samaritan | *
+  offbeat | Offbeat and viral | offbeat, bizarre, ~strange, ~weird, quirky, ~unusual, goes viral, ~trending, meme, netizens, internet reacts | *
+  records | Records and firsts | world record, guinness, record-breaking, first ever, ~youngest, ~oldest, ~tallest, ~largest
+
+sport | Sport | sport, sports, ~match, ~tournament, championship, world cup, ~season opener, ~playoff, ~playoffs
+  cricket | Cricket | cricket, cricketer, wicket, test match, odi, t20, t20i, bcci, icc, ~innings, ~century, batter, bowler, test series, odi series, t20i series, team india, india vs, ind vs, ashes, world test championship, ipl, indian premier league, csk, chennai super kings, mumbai indians, rcb, kkr, srh, rajasthan royals, delhi capitals, punjab kings, lucknow super giants, gujarat titans, t20 world cup, cricket world cup, champions trophy, women's cricket, wpl, ranji trophy, vijay hazare, syed mushtaq ali, duleep trophy, tnpl, big bash, bbl, psl, the hundred, sa20, cpl, major league cricket | *
+  football | Football (soccer) | football, soccer, fifa, uefa, ~goal, ~striker, midfielder, transfer window, premier league, epl, ~arsenal, ~chelsea, ~liverpool, manchester united, manchester city, tottenham, ~newcastle, aston villa, la liga, real madrid, barcelona, atletico madrid, serie a, juventus, inter milan, ac milan, napoli, ~roma, bundesliga, bayern munich, borussia dortmund, ligue 1, psg, paris saint-germain, marseille, champions league, europa league, conference league, ucl, world cup qualifier, fifa world cup, copa america, afc asian cup, nations league, isl, indian super league, i-league, aiff, chennaiyin, mohun bagan, east bengal, bengaluru fc, kerala blasters, wsl, nwsl, mls, major league soccer, inter miami | *
+  motor-racing | Motor racing | motorsport, motor racing, ~racing, ~grand prix, ~race, ~qualifying, pole position, ~podium, formula 1, formula one, f1, verstappen, ~hamilton, leclerc, ~norris, piastri, ~russell, ~alonso, ~sainz, red bull racing, ~ferrari, mclaren, mercedes f1, aston martin f1, williams racing, alpine f1, ~haas, sauber, audi f1, cadillac f1, racing bulls, ocon, gasly, albon, tsunoda, hulkenberg, bortoleto, antonelli, hadjar, bearman, colapinto, hirakawa, fp1, fp2, fp3, sprint qualifying, pit stop, fia, formula 2, formula 3, motogp, moto2, moto3, marquez, bagnaia, ducati, aprilia, indycar, indy 500, nascar, wec, world endurance championship, le mans, imsa, formula e, wrc, world rally championship, dakar, superbike | *
+  tennis | Tennis | tennis, atp, wta, grand slam, wimbledon, us open, australian open, french open, roland garros, sinner, alcaraz, djokovic, sabalenka, swiatek, gauff, atp finals, wta finals, davis cup, billie jean king cup, ~fernandez, ~rybakina, ~zverev, ~medvedev, ~fritz, ~rune, ~draper, ~pegula, ~andreeva, masters 1000, bopanna | *
+  chess | Chess | chess, grandmaster, fide, gukesh, praggnanandhaa, arjun erigaisi, carlsen, caruana, nakamura, candidates tournament, world chess championship, chess olympiad, divya deshmukh, humpy, norway chess, tata steel chess, freestyle chess | *
+  basketball | Basketball | basketball, nba, euroleague, wnba, fiba, lebron, ~curry, ncaa tournament, march madness, final four, ~point guard, ~rebounds, ~three-pointer, nba finals, lakers, celtics, ~warriors, knicks, ~bucks, ~nuggets, ~76ers, ~sixers, ~heat, ~thunder, ~mavericks, ~clippers, ~suns, ~spurs, ~cavaliers, ~pacers, ~valkyries, ~liberty, ~aces, ~fever, ~lynx
+  american-football | American football | nfl, super bowl, quarterback, touchdown, touchdowns, running back, wide receiver, tight end, linebacker, cornerback, field goal, college football, ncaa football, cfp, heisman, big ten, high school football, ~interception, ~fumble, end zone, gridiron, ~patriots, ~cowboys, ~packers, ~steelers, 49ers, ~chiefs, ~ravens, ~broncos, ~eagles, ~bears, ~seahawks, ~commanders, ~raiders, ~chargers, ~dolphins, ~bengals, ~browns, ~texans, ~colts, ~jaguars, ~titans, ~bills, ~vikings, ~lions, ~falcons, ~saints, ~buccaneers, ~panthers, ~rams, ~giants, ~jets
+  baseball | Baseball | baseball, mlb, world series, ~pitcher, home run, ~inning, ~shortstop, ~bullpen, ~dodgers, ~yankees, ~red sox, ~mets, ~cubs, ~astros, ~phillies, ~padres, ~blue jays, ~braves
+  hockey | Hockey | nhl, ice hockey, stanley cup, ~hockey, hockey india, field hockey, fih, hockey india league, sreejesh, harmanpreet, ~maple leafs, ~canadiens, ~oilers, ~bruins, ~penguins, ~avalanche
+  golf | Golf | golf, pga tour, liv golf, dp world tour, masters tournament, ryder cup, open championship
+  athletics | Athletics and running | athletics, ~sprint, marathon, diamond league, javelin, neeraj chopra, world athletics
+  olympics | Olympics and multi-sport games | olympics, olympic, paralympics, paralympic, asian games, commonwealth games, ioc, la 2028, winter olympics | *
+  badminton | Badminton and table tennis | badminton, bwf, sindhu, lakshya sen, satwik, chirag, all england, table tennis, ultimate table tennis
+  combat | Combat sports | boxing, boxer, heavyweight, wbc, mma, ufc, mixed martial arts, wrestling, wrestler, judo, sumo, wwe
+  kabaddi | Kabaddi | kabaddi, pro kabaddi, pkl, tamil thalaivas
+  rugby | Rugby | rugby, six nations, rugby world cup, rugby league
+  cycling | Cycling | cycling, tour de france, giro d'italia, vuelta, cyclist, uci
+  gaelic | Gaelic games | hurling, gaelic football, camogie, gaa, all-ireland
+  aquatics | Swimming and water sports | swimming, swimmer, world aquatics, diving, water polo, sailing, america's cup, sailgp, rowing, regatta, canoeing
+  winter | Winter sports | skiing, snowboarding, biathlon, figure skating, speed skating, curling
+  other-sports | Other sports | squash, snooker, billiards, darts, lacrosse, ~polo, ~fencing, weightlifting, triathlon, gymnastics, gymnast, archery, ~shooting, horse racing, jockey, equestrian, kentucky derby, epsom derby, volleyball, handball
+  sport-business | Sport governance and doping | broadcast rights, media rights, sports ministry, doping, wada, nada, anti-doping, sports federation, ioa

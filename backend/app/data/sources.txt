@@ -1,0 +1,449 @@
+# Hand-checked starter sources (phase 1). Every feed below was fetched on 30 Oct 2026 with an honest
+# user agent and returned a parseable feed with items (official feeds may carry no item dates; first-seen
+# time is used for those). From phase 2 these become ordinary registry entries; the trust crawler then
+# scores them from evidence. Until then the app labels every one of them "Provisional: hand-picked starter
+# source" and gives it no score of its own.
+#
+# @source | key | name | domain | country | type | scope
+#   type : news | public_broadcaster | state_funded_broadcaster | official | company | specialist | factcheck | community
+#          community = a link site where people or editors pick stories from many outlets (Hacker News, Techmeme). Its feed is
+#          read with kind "community": each story is stored as the linked outlet's article when that outlet is collected.
+#   scope: national = an article with no place of its own is about the outlet's country;
+#          international = no such fallback (world coverage).
+# feed  | source key | feed url | topic hints (comma separated codes) | place hints | kind (rss when empty; community, sitemap)
+#   place hints: empty = follow the source's scope, "-" = never fall back to the outlet's country,
+#                otherwise comma separated place codes (IN-TN, IN-TN-chennai, asia-pacific, ...)
+#   A feed whose topic hint is a sub-topic (more than one level deep) is a specialist feed: it is polled
+#   only while one of its hint topics is enabled in Settings -> Topics.
+
+@source | hindu | The Hindu | thehindu.com | IN | news | national
+@source | sportstar | Sportstar (The Hindu Group) | sportstar.thehindu.com | IN | specialist | national
+@source | indianexpress | The Indian Express | indianexpress.com | IN | news | national
+@source | mint | Mint | livemint.com | IN | news | national
+@source | ht | Hindustan Times | hindustantimes.com | IN | news | national
+@source | bs | Business Standard | business-standard.com | IN | news | national
+@source | ndtv | NDTV | ndtv.com | IN | news | national
+@source | et | The Economic Times | economictimes.indiatimes.com | IN | news | national
+@source | toi | The Times of India | timesofindia.indiatimes.com | IN | news | national
+@source | scroll | Scroll.in | scroll.in | IN | news | national
+@source | theprint | ThePrint | theprint.in | IN | news | national
+@source | dtnext | DT Next | dtnext.in | IN | news | national
+@source | nie | The New Indian Express | newindianexpress.com | IN | news | national
+@source | dh | Deccan Herald | deccanherald.com | IN | news | national
+@source | dte | Down To Earth | downtoearth.org.in | IN | specialist | national
+@source | mongabay-in | Mongabay India | india.mongabay.com | IN | specialist | national
+@source | livelaw | LiveLaw | livelaw.in | IN | specialist | national
+@source | barandbench | Bar and Bench | barandbench.com | IN | specialist | national
+@source | altnews | Alt News | altnews.in | IN | factcheck | national
+@source | medianama | MEDIANAMA | medianama.com | IN | specialist | national
+@source | pib | Press Information Bureau (Government of India) | pib.gov.in | IN | official | national
+@source | rbi | Reserve Bank of India | rbi.org.in | IN | official | national
+@source | sebi | SEBI | sebi.gov.in | IN | official | national
+@source | bbc | BBC News | bbc.com | GB | public_broadcaster | international
+@source | bbcsport | BBC Sport | bbc.com | GB | public_broadcaster | international
+@source | guardian | The Guardian | theguardian.com | GB | news | international
+@source | aljazeera | Al Jazeera | aljazeera.com | QA | state_funded_broadcaster | international
+@source | npr | NPR | npr.org | US | public_broadcaster | international
+@source | pbs | PBS NewsHour | pbs.org | US | public_broadcaster | international
+@source | dw | Deutsche Welle | dw.com | DE | public_broadcaster | international
+@source | france24 | France 24 | france24.com | FR | public_broadcaster | international
+@source | cna | CNA (Channel NewsAsia) | channelnewsasia.com | SG | state_funded_broadcaster | international
+@source | abc-au | ABC News (Australia) | abc.net.au | AU | public_broadcaster | international
+@source | cbc | CBC News | cbc.ca | CA | public_broadcaster | international
+@source | rnz | RNZ | rnz.co.nz | NZ | public_broadcaster | international
+@source | nyt | The New York Times | nytimes.com | US | news | international
+@source | cnbc | CNBC | cnbc.com | US | news | international
+@source | marketwatch | MarketWatch | marketwatch.com | US | news | international
+@source | economist | The Economist | economist.com | GB | news | international
+@source | ft | Financial Times | ft.com | GB | news | international
+@source | nikkei | Nikkei Asia | asia.nikkei.com | JP | news | international
+@source | scmp | South China Morning Post | scmp.com | HK | news | international
+@source | japantimes | The Japan Times | japantimes.co.jp | JP | news | international
+@source | straitstimes | The Straits Times | straitstimes.com | SG | news | international
+@source | yonhap | Yonhap News Agency | en.yna.co.kr | KR | news | international
+@source | kathmandupost | The Kathmandu Post | kathmandupost.com | NP | news | international
+@source | dailymirror-lk | Daily Mirror (Sri Lanka) | dailymirror.lk | LK | news | international
+@source | rappler | Rappler | rappler.com | PH | news | international
+@source | diplomat | The Diplomat | thediplomat.com | US | specialist | international
+@source | euronews | Euronews | euronews.com | FR | news | international
+@source | politico | Politico | politico.com | US | news | international
+@source | politico-eu | Politico Europe | politico.eu | BE | news | international
+@source | semafor | Semafor | semafor.com | US | news | international
+@source | foreignpolicy | Foreign Policy | foreignpolicy.com | US | specialist | international
+@source | kyivindependent | The Kyiv Independent | kyivindependent.com | UA | news | international
+@source | moscowtimes | The Moscow Times | themoscowtimes.com | NL | news | international
+@source | meduza | Meduza | meduza.io | LV | news | international
+@source | haaretz | Haaretz | haaretz.com | IL | news | international
+@source | thenational-ae | The National (UAE) | thenationalnews.com | AE | news | international
+@source | premiumtimes | Premium Times | premiumtimesng.com | NG | news | international
+@source | dailymaverick | Daily Maverick | dailymaverick.co.za | ZA | news | international
+@source | batimes | Buenos Aires Times | batimes.com.ar | AR | news | international
+@source | mercopress | MercoPress | en.mercopress.com | UY | news | international
+@source | irishtimes | The Irish Times | irishtimes.com | IE | news | international
+@source | globeandmail | The Globe and Mail | theglobeandmail.com | CA | news | international
+@source | defensenews | Defense News | defensenews.com | US | specialist | international
+@source | bellingcat | Bellingcat | bellingcat.com | NL | specialist | international
+@source | un | UN News | news.un.org | UN | official | international
+@source | who | World Health Organization | who.int | UN | official | international
+@source | fed | Federal Reserve | federalreserve.gov | US | official | international
+@source | sec | U.S. Securities and Exchange Commission | sec.gov | US | official | international
+@source | nasa | NASA | nasa.gov | US | official | international
+@source | esa | European Space Agency | esa.int | FR | official | international
+@source | f1 | Formula 1 (official) | formula1.com | GB | official | international
+@source | fia | FIA | fia.com | FR | official | international
+@source | fide | FIDE | fide.com | CH | official | international
+@source | therace | The Race | the-race.com | GB | specialist | international
+@source | autosport | Autosport | autosport.com | GB | specialist | international
+@source | motorsport | Motorsport.com | motorsport.com | US | specialist | international
+@source | racefans | RaceFans | racefans.net | GB | specialist | international
+@source | skysports | Sky Sports | skysports.com | GB | news | international
+@source | espn | ESPN | espn.com | US | news | international
+@source | crash | Crash.net | crash.net | GB | specialist | international
+@source | cricinfo | ESPNcricinfo | cricinfo.com | IN | specialist | international
+@source | chesscom | Chess.com | chess.com | US | specialist | international
+@source | chessbase | ChessBase | chessbase.com | DE | specialist | international
+@source | lichess | Lichess | lichess.org | FR | company | international
+@source | mittr | MIT Technology Review | technologyreview.com | US | specialist | international
+@source | verge | The Verge | theverge.com | US | news | international
+@source | ars | Ars Technica | arstechnica.com | US | specialist | international
+@source | techcrunch | TechCrunch | techcrunch.com | US | news | international
+@source | wired | WIRED | wired.com | US | news | international
+@source | bleeping | BleepingComputer | bleepingcomputer.com | US | specialist | international
+@source | therecord | The Record | therecord.media | US | specialist | international
+@source | krebs | Krebs on Security | krebsonsecurity.com | US | specialist | international
+@source | darkreading | Dark Reading | darkreading.com | US | specialist | international
+@source | securityweek | SecurityWeek | securityweek.com | US | specialist | international
+@source | eetimes | EE Times | eetimes.com | US | specialist | international
+@source | tomshardware | Tom's Hardware | tomshardware.com | US | specialist | international
+@source | ieee | IEEE Spectrum | spectrum.ieee.org | US | specialist | international
+@source | restofworld | Rest of World | restofworld.org | US | specialist | international
+@source | hn | Hacker News | news.ycombinator.com | US | community | international
+@source | techmeme | Techmeme | techmeme.com | US | community | international
+@source | mediagazer | Mediagazer | mediagazer.com | US | community | international
+@source | memeorandum | memeorandum | memeorandum.com | US | community | international
+@source | wesmirch | WeSmirch | wesmirch.com | US | community | international
+@source | tildes | Tildes | tildes.net | XX | community | international
+@source | lemmy-world | Lemmy (lemmy.world) | lemmy.world | XX | community | international
+@source | slashdot | Slashdot | slashdot.org | US | specialist | international
+@source | openai | OpenAI | openai.com | US | company | international
+@source | deepmind | Google DeepMind | deepmind.google | GB | company | international
+@source | googleai | Google (AI blog) | blog.google | US | company | international
+@source | hf | Hugging Face | huggingface.co | US | company | international
+@source | importai | Import AI | importai.substack.com | US | specialist | international
+@source | eurogamer | Eurogamer | eurogamer.net | GB | specialist | international
+@source | gamesindustry | GamesIndustry.biz | gamesindustry.biz | GB | specialist | international
+@source | polygon | Polygon | polygon.com | US | specialist | international
+@source | rps | Rock Paper Shotgun | rockpapershotgun.com | GB | specialist | international
+@source | vgc | VideoGamesChronicle | videogameschronicle.com | GB | specialist | international
+@source | ign | IGN | ign.com | US | specialist | international
+@source | playstation | PlayStation Blog | blog.playstation.com | US | company | international
+@source | xbox | Xbox Wire | news.xbox.com | US | company | international
+@source | nintendolife | Nintendo Life | nintendolife.com | GB | specialist | international
+@source | kotaku | Kotaku | kotaku.com | US | specialist | international
+@source | pcgamer | PC Gamer | pcgamer.com | GB | specialist | international
+@source | dexerto | Dexerto | dexerto.com | GB | specialist | international
+@source | nature | Nature | nature.com | GB | specialist | international
+@source | science | Science | science.org | US | specialist | international
+@source | spacecom | Space.com | space.com | US | specialist | international
+@source | quanta | Quanta Magazine | quantamagazine.org | US | specialist | international
+@source | stat | STAT | statnews.com | US | specialist | international
+@source | carbonbrief | Carbon Brief | carbonbrief.org | GB | specialist | international
+@source | insideclimate | Inside Climate News | insideclimatenews.org | US | specialist | international
+@source | variety | Variety | variety.com | US | specialist | international
+@source | thr | The Hollywood Reporter | hollywoodreporter.com | US | specialist | international
+@source | deadline | Deadline | deadline.com | US | specialist | international
+
+# Left out because their robots.txt disallows our crawler (News Anchor respects robots.txt): Axios, The Times of Israel,
+# The Register, New Scientist. They can be added by the owner if the publisher's policy changes.
+
+# --- India: national general ---
+feed | hindu | https://www.thehindu.com/news/national/feeder/default.rss | politics |
+feed | hindu | https://www.thehindu.com/news/international/feeder/default.rss | | -
+feed | hindu | https://www.thehindu.com/business/feeder/default.rss | economy |
+feed | hindu | https://www.thehindu.com/sport/feeder/default.rss | sport |
+feed | hindu | https://www.thehindu.com/sport/cricket/feeder/default.rss | sport.cricket |
+feed | hindu | https://www.thehindu.com/sci-tech/feeder/default.rss | science |
+feed | hindu | https://www.thehindu.com/entertainment/movies/feeder/default.rss | arts |
+feed | hindu | https://www.thehindu.com/news/national/tamil-nadu/feeder/default.rss | | IN-TN
+feed | hindu | https://www.thehindu.com/news/cities/chennai/feeder/default.rss | | IN-TN-chennai
+feed | indianexpress | https://indianexpress.com/section/india/feed/ | |
+feed | indianexpress | https://indianexpress.com/section/world/feed/ | | -
+feed | indianexpress | https://indianexpress.com/section/business/feed/ | economy |
+feed | indianexpress | https://indianexpress.com/section/sports/feed/ | sport |
+feed | indianexpress | https://indianexpress.com/section/sports/cricket/feed/ | sport.cricket |
+feed | indianexpress | https://indianexpress.com/section/sports/chess/feed/ | sport.chess |
+feed | indianexpress | https://indianexpress.com/section/technology/feed/ | science |
+feed | indianexpress | https://indianexpress.com/section/cities/chennai/feed/ | | IN-TN-chennai
+feed | indianexpress | https://indianexpress.com/section/entertainment/tamil/feed/ | arts.film | IN-TN
+feed | mint | https://www.livemint.com/rss/news | |
+feed | mint | https://www.livemint.com/rss/markets | economy.markets |
+feed | mint | https://www.livemint.com/rss/companies | economy |
+feed | mint | https://www.livemint.com/rss/technology | science |
+feed | mint | https://www.livemint.com/rss/economy | economy |
+feed | ht | https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml | |
+feed | ht | https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml | | -
+feed | bs | https://www.business-standard.com/rss/latest.rss | |
+feed | bs | https://www.business-standard.com/rss/markets-106.rss | economy.markets |
+feed | ndtv | https://feeds.feedburner.com/ndtvnews-top-stories | |
+feed | et | https://economictimes.indiatimes.com/rssfeedstopstories.cms | |
+feed | toi | https://timesofindia.indiatimes.com/rssfeeds/2950623.cms | | IN-TN-chennai
+feed | scroll | https://feeds.feedburner.com/ScrollinArticles.rss | |
+feed | theprint | https://theprint.in/category/india/feed/ | |
+feed | dtnext | https://www.dtnext.in/stories.rss | | IN-TN
+feed | dtnext | https://www.dtnext.in/stories.rss?section=chennai | | IN-TN-chennai
+feed | nie | https://www.newindianexpress.com/stories.rss | |
+feed | dh | https://www.deccanherald.com/stories.rss | |
+feed | dte | https://www.downtoearth.org.in/stories.rss | environment |
+feed | mongabay-in | https://india.mongabay.com/feed/ | environment |
+feed | livelaw | https://www.livelaw.in/category/top-stories/google_feeds.xml | crime.courts |
+feed | barandbench | https://www.barandbench.com/stories.rss | crime.courts |
+feed | altnews | https://www.altnews.in/feed/ | society.fact-checks |
+feed | medianama | https://www.medianama.com/feed/ | science.internet |
+feed | pib | https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 | politics.government |
+feed | rbi | https://www.rbi.org.in/pressreleases_rss.xml | economy.banking |
+feed | sebi | https://www.sebi.gov.in/sebirss.xml | economy.banking |
+feed | sportstar | https://sportstar.thehindu.com/feeder/default.rss | sport |
+feed | sportstar | https://sportstar.thehindu.com/motorsport/feeder/default.rss | sport.motor-racing |
+feed | sportstar | https://sportstar.thehindu.com/chess/feeder/default.rss | sport.chess |
+feed | sportstar | https://sportstar.thehindu.com/tennis/feeder/default.rss | sport.tennis |
+feed | sportstar | https://sportstar.thehindu.com/cricket/feeder/default.rss | sport.cricket |
+feed | sportstar | https://sportstar.thehindu.com/football/feeder/default.rss | sport.football |
+
+# --- World: broadcasters, papers, agencies ---
+feed | bbc | https://feeds.bbci.co.uk/news/world/rss.xml | | -
+feed | bbc | https://feeds.bbci.co.uk/news/world/asia/rss.xml | | asia-pacific
+feed | bbc | https://feeds.bbci.co.uk/news/business/rss.xml | economy | -
+feed | bbc | https://feeds.bbci.co.uk/news/technology/rss.xml | science | -
+feed | bbc | https://feeds.bbci.co.uk/news/science_and_environment/rss.xml | science | -
+feed | bbc | https://feeds.bbci.co.uk/news/health/rss.xml | health | -
+feed | guardian | https://www.theguardian.com/world/rss | | -
+feed | guardian | https://www.theguardian.com/uk/business/rss | economy | -
+feed | guardian | https://www.theguardian.com/uk/technology/rss | science | -
+feed | guardian | https://www.theguardian.com/uk/environment/rss | environment | -
+feed | guardian | https://www.theguardian.com/science/rss | science | -
+feed | aljazeera | https://www.aljazeera.com/xml/rss/all.xml | | -
+feed | npr | https://feeds.npr.org/1004/rss.xml | | -
+feed | pbs | https://www.pbs.org/newshour/feeds/rss/headlines | | -
+feed | dw | https://rss.dw.com/rdf/rss-en-top | | -
+feed | dw | https://rss.dw.com/rdf/rss-en-asia | | asia-pacific
+feed | france24 | https://www.france24.com/en/rss | | -
+feed | cna | https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511 | | asia-pacific
+feed | abc-au | https://www.abc.net.au/news/feed/2942460/rss.xml | | -
+feed | cbc | https://www.cbc.ca/webfeed/rss/rss-world | | -
+feed | rnz | https://www.rnz.co.nz/rss/world.xml | | -
+feed | nyt | https://rss.nytimes.com/services/xml/rss/nyt/World.xml | | -
+feed | nyt | https://rss.nytimes.com/services/xml/rss/nyt/Business.xml | economy | -
+feed | nyt | https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml | science | -
+feed | cnbc | https://www.cnbc.com/id/100003114/device/rss/rss.html | economy.markets | -
+feed | cnbc | https://www.cnbc.com/id/15839069/device/rss/rss.html | economy.markets | -
+feed | marketwatch | https://feeds.content.dowjones.io/public/rss/mw_topstories | economy.markets | -
+feed | economist | https://www.economist.com/latest/rss.xml | | -
+feed | ft | https://www.ft.com/rss/home/international | | -
+feed | nikkei | https://asia.nikkei.com/rss/feed/nar | | asia-pacific
+feed | scmp | https://www.scmp.com/rss/91/feed/ | | asia-pacific
+feed | japantimes | https://www.japantimes.co.jp/feed/ | | JP
+feed | straitstimes | https://www.straitstimes.com/news/world/rss.xml | | -
+feed | straitstimes | https://www.straitstimes.com/news/asia/rss.xml | | asia-pacific
+feed | yonhap | https://en.yna.co.kr/RSS/news.xml | | KR
+feed | kathmandupost | https://kathmandupost.com/rss | | NP
+feed | dailymirror-lk | https://www.dailymirror.lk/rss/breaking-news/108 | | LK
+feed | rappler | https://www.rappler.com/feed/ | | PH
+feed | diplomat | https://thediplomat.com/feed/ | politics.diplomacy | asia-pacific
+feed | euronews | https://www.euronews.com/rss?format=mrss&level=theme&name=news | | europe
+feed | politico | https://rss.politico.com/politics-news.xml | politics | US
+feed | politico-eu | https://www.politico.eu/feed/ | politics | europe
+feed | semafor | https://www.semafor.com/rss.xml | | -
+feed | foreignpolicy | https://foreignpolicy.com/feed/ | politics.diplomacy | -
+feed | kyivindependent | https://kyivindependent.com/news-archive/rss/ | conflict | UA
+feed | moscowtimes | https://www.themoscowtimes.com/rss/news | | RU
+feed | meduza | https://meduza.io/rss/en/all | | RU
+feed | haaretz | https://www.haaretz.com/srv/haaretz-latest-headlines | | IL
+feed | thenational-ae | https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml | | middle-east
+feed | premiumtimes | https://www.premiumtimesng.com/feed | | NG
+feed | dailymaverick | https://www.dailymaverick.co.za/dmrss/ | | ZA
+feed | batimes | https://www.batimes.com.ar/feed | | AR
+feed | mercopress | https://en.mercopress.com/rss/ | | americas
+feed | irishtimes | https://www.irishtimes.com/arc/outboundfeeds/feed-irish-news/?outputType=xml | | IE
+feed | globeandmail | https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/world/ | | -
+feed | defensenews | https://www.defensenews.com/feed/ | conflict.defence | -
+feed | bellingcat | https://www.bellingcat.com/feed/ | conflict | -
+feed | un | https://news.un.org/feed/subscribe/en/news/all/rss.xml | politics.diplomacy | -
+feed | who | https://www.who.int/rss-feeds/news-english.xml | health | -
+feed | fed | https://www.federalreserve.gov/feeds/press_all.xml | economy.central-banks | US
+feed | sec | https://www.sec.gov/news/pressreleases.rss | economy.banking | US
+
+# --- Sports: motorsport (F1 is favourited and enabled by default) ---
+feed | f1 | https://www.formula1.com/en/latest/all.xml | sport.motor-racing | -
+feed | fia | https://www.fia.com/rss/news | sport.motor-racing | -
+feed | therace | https://www.the-race.com/rss/ | sport.motor-racing | -
+feed | autosport | https://www.autosport.com/rss/f1/news/ | sport.motor-racing | -
+feed | autosport | https://www.autosport.com/rss/motogp/news/ | sport.motor-racing | -
+feed | autosport | https://www.autosport.com/rss/wec/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/f1/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/motogp/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/wec/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/indycar/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/formula-e/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/wrc/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/nascar-cup/news/ | sport.motor-racing | -
+feed | motorsport | https://www.motorsport.com/rss/fia-f2/news/ | sport.motor-racing | -
+feed | racefans | https://www.racefans.net/feed/ | sport.motor-racing | -
+feed | skysports | https://www.skysports.com/rss/12433 | sport.motor-racing | -
+feed | espn | https://www.espn.com/espn/rss/f1/news | sport.motor-racing | -
+feed | crash | https://www.crash.net/rss/motogp | sport.motor-racing | -
+feed | crash | https://www.crash.net/rss/f1 | sport.motor-racing | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/formula1/rss.xml | sport.motor-racing | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/motorsport/rss.xml | sport.motor-racing | -
+feed | guardian | https://www.theguardian.com/sport/formulaone/rss | sport.motor-racing | -
+
+# --- Sports: other ---
+feed | cricinfo | https://www.cricinfo.com/rss/content/story/feeds/0.xml | sport.cricket | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/cricket/rss.xml | sport.cricket | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/football/rss.xml | sport.football | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/tennis/rss.xml | sport.tennis | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/golf/rss.xml | sport.golf | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/athletics/rss.xml | sport.athletics | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/boxing/rss.xml | sport.combat | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/mixed-martial-arts/rss.xml | sport.combat | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/rugby-union/rss.xml | sport.rugby | -
+feed | bbcsport | https://feeds.bbci.co.uk/sport/cycling/rss.xml | sport.cycling | -
+feed | guardian | https://www.theguardian.com/football/rss | sport.football | -
+feed | guardian | https://www.theguardian.com/sport/tennis/rss | sport.tennis | -
+feed | guardian | https://www.theguardian.com/sport/chess/rss | sport.chess | -
+feed | skysports | https://www.skysports.com/rss/12040 | sport.football | -
+feed | espn | https://www.espn.com/espn/rss/soccer/news | sport.football | -
+feed | espn | https://www.espn.com/espn/rss/tennis/news | sport.tennis | -
+feed | espn | https://www.espn.com/espn/rss/nba/news | sport.basketball | -
+feed | espn | https://www.espn.com/espn/rss/nfl/news | sport.american-football | -
+feed | chesscom | https://www.chess.com/rss/news | sport.chess | -
+feed | chessbase | https://en.chessbase.com/feed | sport.chess | -
+feed | fide | https://www.fide.com/feed/ | sport.chess | -
+feed | lichess | https://lichess.org/@/lichess/blog.atom | sport.chess | -
+
+# --- Technology, AI, security ---
+feed | mittr | https://www.technologyreview.com/feed/ | science | -
+feed | mittr | https://www.technologyreview.com/topic/artificial-intelligence/feed | science.ai | -
+feed | verge | https://www.theverge.com/rss/index.xml | science | -
+feed | verge | https://www.theverge.com/rss/ai-artificial-intelligence/index.xml | science.ai | -
+feed | ars | https://feeds.arstechnica.com/arstechnica/index | science | -
+feed | ars | https://arstechnica.com/ai/feed/ | science.ai | -
+feed | techcrunch | https://techcrunch.com/feed/ | science | -
+feed | wired | https://www.wired.com/feed/rss | science | -
+feed | guardian | https://www.theguardian.com/technology/artificialintelligenceai/rss | science.ai | -
+feed | bleeping | https://www.bleepingcomputer.com/feed/ | science.cybersecurity | -
+feed | therecord | https://therecord.media/feed | science.cybersecurity | -
+feed | krebs | https://krebsonsecurity.com/feed/ | science.cybersecurity | -
+feed | darkreading | https://www.darkreading.com/rss.xml | science.cybersecurity | -
+feed | securityweek | https://www.securityweek.com/feed/ | science.cybersecurity | -
+feed | eetimes | https://www.eetimes.com/feed/ | science.computing | -
+feed | tomshardware | https://www.tomshardware.com/feeds.xml | science.computing | -
+feed | ieee | https://spectrum.ieee.org/feeds/feed.rss | science | -
+feed | restofworld | https://restofworld.org/feed/latest/ | science | -
+feed | hn | https://hnrss.org/frontpage?points=100 | science | - | community
+feed | techmeme | https://www.techmeme.com/feed.xml | science | - | community
+feed | mediagazer | https://mediagazer.com/feed.xml | arts | - | community
+feed | memeorandum | https://www.memeorandum.com/feed.xml | politics | - | community
+feed | wesmirch | https://www.wesmirch.com/feed.xml | arts | - | community
+feed | tildes | https://tildes.net/~news/topics.rss | | - | community
+feed | tildes | https://tildes.net/~science/topics.rss | science | - | community
+feed | lemmy-world | https://lemmy.world/feeds/c/technology.xml?sort=Hot | science | - | community
+feed | lemmy-world | https://lemmy.world/feeds/c/world.xml?sort=Hot | | - | community
+feed | slashdot | https://rss.slashdot.org/Slashdot/slashdotMain | science | -
+feed | openai | https://openai.com/news/rss.xml | science.ai | -
+feed | deepmind | https://deepmind.google/blog/rss.xml | science.ai | -
+feed | googleai | https://blog.google/innovation-and-ai/technology/ai/rss/ | science.ai | -
+feed | hf | https://huggingface.co/blog/feed.xml | science.ai | -
+feed | importai | https://importai.substack.com/feed | science.ai | -
+
+# --- Video games ---
+feed | guardian | https://www.theguardian.com/games/rss | arts.video-games | -
+feed | eurogamer | https://www.eurogamer.net/feed | arts.video-games | -
+feed | gamesindustry | https://www.gamesindustry.biz/feed | arts.video-games | -
+feed | polygon | https://www.polygon.com/feed/ | arts.video-games | -
+feed | rps | https://www.rockpapershotgun.com/feed | arts.video-games | -
+feed | vgc | https://www.videogameschronicle.com/feed/ | arts.video-games | -
+feed | ign | https://www.ign.com/rss/articles/feed | arts.video-games | -
+feed | playstation | https://blog.playstation.com/feed/ | arts.video-games | -
+feed | xbox | https://news.xbox.com/en-us/feed/ | arts.video-games | -
+feed | nintendolife | https://www.nintendolife.com/feeds/latest | arts.video-games | -
+feed | kotaku | https://kotaku.com/feed | arts.video-games | -
+feed | pcgamer | https://www.pcgamer.com/rss/ | arts.video-games | -
+feed | dexerto | https://www.dexerto.com/feed/ | arts.video-games | -
+
+# --- Science, health, climate ---
+feed | nature | https://www.nature.com/nature.rss | science | -
+feed | science | https://www.science.org/rss/news_current.xml | science | -
+feed | nasa | https://www.nasa.gov/feed/ | science.space | -
+feed | esa | https://www.esa.int/rssfeed/Our_Activities/Space_News | science.space | -
+feed | spacecom | https://www.space.com/feeds.xml | science.space | -
+feed | quanta | https://www.quantamagazine.org/feed/ | science | -
+feed | stat | https://www.statnews.com/feed/ | health.medicine | -
+feed | carbonbrief | https://www.carbonbrief.org/feed | environment.climate-change | -
+feed | insideclimate | https://insideclimatenews.org/feed/ | environment.climate-change | -
+
+# --- Entertainment ---
+feed | variety | https://variety.com/feed/ | arts | -
+feed | thr | https://www.hollywoodreporter.com/feed/ | arts.film | -
+feed | deadline | https://deadline.com/feed/ | arts.film | -
+
+# ---- added in phase 2b: specialist sources for the broader taxonomy (each feed fetched and parsed on 1 Nov 2026) ----
+@source | utilitydive | Utility Dive | utilitydive.com | US | specialist | international
+feed | utilitydive | https://www.utilitydive.com/feeds/news/ | economy.energy | -
+@source | cleantechnica | CleanTechnica | cleantechnica.com | US | specialist | international
+feed | cleantechnica | https://cleantechnica.com/feed/ | economy.energy | -
+@source | eia | US Energy Information Administration | eia.gov | US | official | international
+feed | eia | https://www.eia.gov/rss/todayinenergy.xml | economy.energy | -
+@source | oilprice | OilPrice.com | oilprice.com | US | specialist | international
+feed | oilprice | https://oilprice.com/rss/main | economy.energy | -
+@source | blagri | BusinessLine Agri-business | thehindubusinessline.com | IN | specialist | national
+feed | blagri | https://www.thehindubusinessline.com/economy/agri-business/feeder/default.rss | economy.agriculture | -
+@source | hrdive | HR Dive | hrdive.com | US | specialist | international
+feed | hrdive | https://www.hrdive.com/feeds/news/ | labour | -
+@source | civileats | Civil Eats | civileats.com | US | specialist | international
+feed | civileats | https://civileats.com/feed/ | economy.agriculture | -
+@source | electrek | Electrek | electrek.co | US | specialist | international
+feed | electrek | https://electrek.co/feed/ | economy.autos | -
+@source | caranddriver | Car and Driver | caranddriver.com | US | specialist | international
+feed | caranddriver | https://www.caranddriver.com/rss/all.xml/ | economy.autos | -
+@source | motor1 | Motor1 | motor1.com | US | specialist | international
+feed | motor1 | https://www.motor1.com/rss/articles/all/ | economy.autos | -
+@source | betterindia | The Better India | thebetterindia.com | IN | specialist | national
+feed | betterindia | https://thebetterindia.com/feed/ | human-interest | -
+@source | pitchfork | Pitchfork | pitchfork.com | US | specialist | international
+feed | pitchfork | https://pitchfork.com/feed/feed-news/rss | arts.music | -
+@source | positivenews | Positive News | positive.news | GB | specialist | international
+feed | positivenews | https://www.positive.news/feed/ | human-interest | -
+@source | rsmusic | Rolling Stone (music) | rollingstone.com | US | specialist | international
+feed | rsmusic | https://www.rollingstone.com/music/feed/ | arts.music | -
+@source | nme | NME | nme.com | GB | specialist | international
+feed | nme | https://www.nme.com/feed | arts.music | -
+@source | goodnews | Good News Network | goodnewsnetwork.org | US | specialist | international
+feed | goodnews | https://www.goodnewsnetwork.org/feed/ | human-interest | -
+@source | billboard | Billboard | billboard.com | US | specialist | international
+feed | billboard | https://www.billboard.com/feed/ | arts.music | -
+@source | atlasobscura | Atlas Obscura | atlasobscura.com | US | specialist | international
+feed | atlasobscura | https://www.atlasobscura.com/feeds/latest | human-interest | -
+@source | stereogum | Stereogum | stereogum.com | US | specialist | international
+feed | stereogum | https://www.stereogum.com/feed/ | arts.music | -
+@source | indiewire | IndieWire | indiewire.com | US | specialist | international
+feed | indiewire | https://www.indiewire.com/feed/ | arts.film | -
+@source | spacenews | SpaceNews | spacenews.com | US | specialist | international
+feed | spacenews | https://spacenews.com/feed/ | science.space | -
+@source | ann | Anime News Network | animenewsnetwork.com | US | specialist | international
+feed | ann | https://www.animenewsnetwork.com/all/rss.xml | arts.anime-comics | -
+@source | physorg | Phys.org | phys.org | GB | specialist | international
+feed | physorg | https://phys.org/rss-feed/ | science | -
+@source | eater | Eater | eater.com | US | specialist | international
+feed | eater | https://www.eater.com/rss/index.xml | lifestyle.food | -
+@source | sciencedaily | ScienceDaily | sciencedaily.com | US | specialist | international
+feed | sciencedaily | https://www.sciencedaily.com/rss/all.xml | science | -
+@source | cntraveler | Condé Nast Traveler | cntraveler.com | US | specialist | international
+feed | cntraveler | https://www.cntraveler.com/feed/rss | lifestyle.travel | -
+@source | cyclingnews | Cyclingnews | cyclingnews.com | GB | specialist | international
+feed | cyclingnews | https://www.cyclingnews.com/feeds/all/ | sport.cycling | -
+@source | vogue | Vogue | vogue.com | US | specialist | international
+feed | vogue | https://www.vogue.com/feed/rss | lifestyle.fashion | -
+@source | gdacs | GDACS (UN/EU disaster alerts) | gdacs.org | UN | official | international
+feed | gdacs | https://www.gdacs.org/xml/rss.xml | disaster | -
+@source | warontherocks | War on the Rocks | warontherocks.com | US | specialist | international
+feed | warontherocks | https://warontherocks.com/feed/ | conflict | -
